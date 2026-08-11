@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>À propos · PROG.AKARTIS</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .page { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
+    .page h1 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 16px; }
+    .page h2 { font-size: 1.3rem; margin: 32px 0 12px; color: var(--brand-blue); }
+    .page p, .page li { color: var(--text-muted); line-height: 1.7; margin-bottom: 12px; }
+    .page ul { padding-left: 1.2rem; }
+    .back { display: inline-block; margin-bottom: 24px; color: var(--brand-blue); font-weight: 500; }
+    .creator {
+      display: flex; gap: 16px; align-items: center; padding: 20px;
+      background: var(--bg-alt); border-radius: 14px; border: 1px solid var(--border); margin: 24px 0;
+    }
+    .creator .avatar {
+      width: 64px; height: 64px; border-radius: 50%; background: var(--brand-blue);
+      display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: white; flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo"><span class="logo-icon">⚡</span><span class="logo-text">PROG<span class="logo-tech">.AKARTIS</span></span></a>
+      <a href="app.html" class="btn btn-primary">COMMENCER À APPRENDRE</a>
+    </div>
+  </header>
+  <div class="page">
+    <a class="back" href="index.html">← Accueil</a>
+    <h1>À propos de PROG.AKARTIS</h1>
+    <p><strong>PROG.AKARTIS</strong> est une plateforme d'apprentissage de la programmation, gratuite et utilisable en local dans ton navigateur.</p>
+
+    <div class="creator">
+      <div class="avatar">A</div>
+      <div>
+        <strong>Créateur : Akartis</strong>
+        <p style="margin:4px 0 0">Développeur et formateur — passionné par l'éducation au code accessible à tous.</p>
+      </div>
+    </div>
+
+    <h2>Mission</h2>
+    <p>Rendre l'apprentissage du code accessible : leçons interactives, quiz, exercices pratiques, progression et certificats, sans compte cloud obligatoire.</p>
+
+    <h2>Ce que tu peux faire ici</h2>
+    <ul>
+      <li>50+ cours (Python, JavaScript, SQL, Rust, Go…)</li>
+      <li>55 leçons par langage (débutant → avancé)</li>
+      <li>Quiz et exercices pratiques avec XP</li>
+      <li>Playground, tableau de bord, mode sombre</li>
+    </ul>
+
+    <h2>Technique</h2>
+    <p>JavaScript et un serveur Python local. La progression est stockée dans le <code>localStorage</code> de ton navigateur.</p>
+    <p style="margin-top:32px"><a href="app.html" class="btn btn-primary">Ouvrir l'app d'apprentissage</a></p>
+  </div>
+  <script>
+    if (localStorage.getItem("prog-akartis-theme") === "dark") document.body.classList.add("dark");
+  </script>
+</body>
+</html>

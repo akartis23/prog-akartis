@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog · PROG.AKARTIS</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .page { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
+    .page h1 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 8px; }
+    .subtitle { color: var(--text-muted); margin-bottom: 32px; }
+    .post { border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin-bottom: 16px; background: var(--bg-alt); }
+    .post h2 { font-size: 1.2rem; margin-bottom: 8px; }
+    .post .meta { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px; }
+    .post p { color: var(--text-muted); line-height: 1.6; }
+    .post a { color: var(--brand-blue); font-weight: 600; }
+    .back { display: inline-block; margin-bottom: 24px; color: var(--brand-blue); font-weight: 500; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo"><span class="logo-icon">⚡</span><span class="logo-text">PROG<span class="logo-tech">.AKARTIS</span></span></a>
+      <a href="app.html" class="btn btn-primary">COMMENCER À APPRENDRE</a>
+    </div>
+  </header>
+  <div class="page">
+    <a class="back" href="index.html">← Accueil</a>
+    <h1>Blog</h1>
+    <p class="subtitle">Articles PROG.AKARTIS — conseils pour bien démarrer.</p>
+
+    <article class="post">
+      <h2>Par quel langage commencer en 2026 ?</h2>
+      <div class="meta">Guide · 5 min</div>
+      <p>Python reste le plus doux pour débuter. HTML/CSS si tu vises le web visuel. JavaScript dès que tu veux de l’interactivité dans le navigateur.</p>
+      <p><a href="app.html?course=python">→ Cours Python</a> · <a href="app.html?course=javascript">Cours JavaScript</a></p>
+    </article>
+
+    <article class="post">
+      <h2>15 minutes par jour battent 3 heures le week-end</h2>
+      <div class="meta">Méthode · 4 min</div>
+      <p>Les séries (streaks) existent pour une raison : la régularité construit la mémoire procédurale. Ouvre une leçon, valide-en une, ferme l’ordi.</p>
+      <p><a href="app.html?view=dashboard">→ Voir mon tableau de bord</a></p>
+    </article>
+
+    <article class="post">
+      <h2>Pourquoi faire les quiz après les leçons ?</h2>
+      <div class="meta">Pédagogie · 3 min</div>
+      <p>Coder et répondre à des QCM mobilisent deux mémoires différentes. Les quiz de PROG.AKARTIS donnent des XP à partir de 50 % de bonnes réponses.</p>
+      <p><a href="app.html?view=quizzes">→ Tous les quiz</a></p>
+    </article>
+
+    <article class="post">
+      <h2>Git en 7 commandes</h2>
+      <div class="meta">Pratique · 6 min</div>
+      <p>init, status, add, commit, branch, log, clone — le minimum pour versionner un projet perso.</p>
+      <p><a href="app.html?course=git">→ Cours Git</a> · <a href="cheatsheets.html">Aide-mémoire</a></p>
+    </article>
+  </div>
+  <script>if (localStorage.getItem("prog-akartis-theme") === "dark") document.body.classList.add("dark");</script>
+</body>
+</html>

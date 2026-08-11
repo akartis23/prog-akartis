@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App · PROG.AKARTIS</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/app.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="app">
+    <!-- Top bar -->
+    <header class="app-header">
+      <div class="app-header-inner">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">PROG<span class="logo-tech">.AKARTIS</span></span>
+        </a>
+        <nav class="app-nav">
+          <button class="app-nav-btn active" data-view="catalog">Catalogue</button>
+          <button class="app-nav-btn" data-view="quizzes">Quiz</button>
+          <button class="app-nav-btn" data-view="exercises">Exercices</button>
+          <button class="app-nav-btn" data-view="dashboard">Tableau de bord</button>
+          <button class="app-nav-btn" data-view="playground">Playground</button>
+        </nav>
+        <div class="app-header-right">
+          <div class="stat-pill" id="xp-pill" title="XP total">⚡ 0 XP</div>
+          <div class="stat-pill" id="streak-pill" title="Série">🔥 0</div>
+          <button class="btn-icon" id="theme-toggle" title="Mode sombre">🌙</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- VIEW: Catalog -->
+      <section class="view active" id="view-catalog">
+        <div class="container">
+          <h1 class="view-title">Catalogue des cours</h1>
+          <p class="view-subtitle">Choisis un langage et commence à coder. Tout est gratuit et fonctionne hors ligne.</p>
+          <div class="course-grid" id="course-grid"></div>
+        </div>
+      </section>
+
+      <!-- VIEW: Course detail (lessons list) -->
+      <section class="view" id="view-course">
+        <div class="container">
+          <button class="back-btn" id="back-to-catalog">← Catalogue</button>
+          <div class="course-header" id="course-header"></div>
+          <div class="lessons-list" id="lessons-list"></div>
+        </div>
+      </section>
+
+      <!-- VIEW: Lesson player -->
+      <section class="view" id="view-lesson">
+        <div class="lesson-layout">
+          <aside class="lesson-sidebar">
+            <button class="back-btn" id="back-to-course">← Cours</button>
+            <div class="lesson-meta" id="lesson-meta"></div>
+            <div class="lesson-theory" id="lesson-theory"></div>
+            <div class="lesson-challenge" id="lesson-challenge"></div>
+          </aside>
+          <div class="lesson-editor-panel">
+            <div class="editor-toolbar">
+              <span class="editor-lang" id="editor-lang">python</span>
+              <div class="editor-actions">
+                <button class="btn btn-sm btn-outline" id="btn-hint">Indice</button>
+                <button class="btn btn-sm btn-outline" id="btn-solution">Solution</button>
+                <button class="btn btn-sm btn-outline" id="btn-reset">Réinitialiser</button>
+                <button class="btn btn-sm btn-primary" id="btn-run">▶ Exécuter</button>
+                <button class="btn btn-sm btn-success" id="btn-submit" disabled>✓ Valider</button>
+              </div>
+            </div>
+            <textarea id="code-editor" spellcheck="false" placeholder="Écris ton code ici..."></textarea>
+            <div class="editor-output-panel">
+              <div class="output-header">
+                <span>Résultat</span>
+                <span id="output-status"></span>
+              </div>
+              <pre id="output-content">Clique sur Exécuter pour tester ton code.</pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW: Dashboard -->
+      <section class="view" id="view-dashboard">
+        <div class="container">
+          <h1 class="view-title">Tableau de bord</h1>
+          <div class="dash-grid" id="dash-grid"></div>
+          <div class="dash-courses" id="dash-courses"></div>
+          <div class="dash-actions">
+            <button class="btn btn-outline" id="btn-reset-progress">Réinitialiser la progression</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW: Playground -->
+      <section class="view" id="view-playground">
+        <div class="container">
+          <h1 class="view-title">Playground</h1>
+          <p class="view-subtitle">Expérimente librement dans tous les langages. JavaScript s'exécute vraiment dans le navigateur ; les autres simulent les sorties print.</p>
+
+          <div class="pg-navbar" id="pg-navbar">
+            <label class="pg-select-label" for="pg-lang-select">Langage</label>
+            <select id="pg-lang-select" class="pg-lang-select" aria-label="Choisir un langage"></select>
+            <div class="pg-lang-tabs" id="pg-lang-tabs" role="tablist"></div>
+          </div>
+
+          <div class="playground-layout">
+            <div class="pg-editor-header">
+              <span id="pg-current-lang">JavaScript</span>
+              <span class="pg-hint" id="pg-hint">Exécution native dans le navigateur</span>
+            </div>
+            <textarea id="pg-editor" spellcheck="false" placeholder="// Écris ton code ici…"></textarea>
+            <div class="pg-actions">
+              <button class="btn btn-primary" id="pg-run">▶ Exécuter</button>
+              <button class="btn btn-outline" id="pg-clear">Effacer</button>
+              <button class="btn btn-outline" id="pg-sample">Exemple</button>
+            </div>
+            <pre id="pg-output" class="pg-output">Choisis un langage et lance ton code.</pre>
+          </div>
+        </div>
+      </section>
+
+      
+      <!-- VIEW: Exercises list -->
+      <section class="view" id="view-exercises">
+        <div class="container">
+          <h1 class="view-title">Exercices pratiques</h1>
+          <p class="view-subtitle">Des défis de code concrets (katas). Choisis un langage, résous, gagne des XP.</p>
+          <div class="ex-lang-tabs" id="ex-lang-tabs"></div>
+          <div class="ex-list" id="ex-list"></div>
+        </div>
+      </section>
+
+      <!-- VIEW: Exercise player (reuse lesson editor layout via same panels) -->
+      <section class="view" id="view-exercise">
+        <div class="lesson-layout">
+          <aside class="lesson-sidebar">
+            <button class="back-btn" id="back-to-exercises">← Exercices</button>
+            <div class="lesson-meta" id="ex-meta"></div>
+            <div class="lesson-challenge" id="ex-prompt"></div>
+            <div class="ex-difficulty" id="ex-diff"></div>
+          </aside>
+          <div class="lesson-editor-panel">
+            <div class="editor-toolbar">
+              <span class="editor-lang" id="ex-editor-lang">code</span>
+              <div class="editor-actions">
+                <button class="btn btn-sm btn-outline" id="ex-hint">Indice</button>
+                <button class="btn btn-sm btn-outline" id="ex-solution">Solution</button>
+                <button class="btn btn-sm btn-outline" id="ex-reset">Réinitialiser</button>
+                <button class="btn btn-sm btn-primary" id="ex-run">▶ Exécuter</button>
+                <button class="btn btn-sm btn-success" id="ex-submit" disabled>✓ Valider</button>
+              </div>
+            </div>
+            <textarea id="ex-code-editor" spellcheck="false" placeholder="Écris ton code ici..."></textarea>
+            <div class="editor-output-panel">
+              <div class="output-header">
+                <span>Résultat</span>
+                <span id="ex-output-status"></span>
+              </div>
+              <pre id="ex-output-content">Clique sur Exécuter pour tester.</pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW: Quiz list -->
+      <section class="view" id="view-quizzes">
+        <div class="container">
+          <h1 class="view-title">Quiz</h1>
+          <p class="view-subtitle">Teste tes connaissances. Réponds aux QCM et gagne des XP (à partir de 50 %).</p>
+          <div class="quiz-grid" id="quiz-grid"></div>
+        </div>
+      </section>
+
+      <!-- VIEW: Quiz player -->
+      <section class="view" id="view-quiz">
+        <div class="container quiz-player">
+          <button class="back-btn" id="back-to-quizzes">← Tous les quiz</button>
+          <div class="quiz-header" id="quiz-header"></div>
+          <div class="quiz-progress-bar"><div class="fill" id="quiz-progress-fill"></div></div>
+          <div class="quiz-card" id="quiz-card"></div>
+          <div class="quiz-nav-btns">
+            <button class="btn btn-outline" id="quiz-prev" disabled>← Précédent</button>
+            <button class="btn btn-primary" id="quiz-next">Suivant →</button>
+            <button class="btn btn-success hidden" id="quiz-finish">Voir les résultats</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW: Quiz results -->
+      <section class="view" id="view-quiz-result">
+        <div class="container">
+          <div class="quiz-result-card" id="quiz-result-card"></div>
+        </div>
+      </section>
+
+      <!-- VIEW: Certificate -->
+      <section class="view" id="view-certificate">
+        <div class="container cert-view">
+          <div class="certificate big" id="cert-card">
+            <div class="cert-badge">🏆</div>
+            <h2>Certificat de Réussite</h2>
+            <p>PROG.AKARTIS certifie que tu as complété avec succès</p>
+            <p class="cert-course" id="cert-course-name">—</p>
+            <p class="cert-date" id="cert-date"></p>
+            <p class="cert-id">ID : <span id="cert-id"></span></p>
+            <p style="margin-top:12px;font-size:0.85rem;color:var(--text-muted)">Délivré par Akartis</p>
+            <button class="btn btn-primary" id="btn-back-catalog">Retour au catalogue</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="data/courses.js"></script>
+  <script src="data/quizzes.js"></script>
+  <script src="data/exercises.js"></script>
+  <script src="js/progress.js"></script>
+  <script src="js/runner.js"></script>
+  <script src="js/learn.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enseignants · PROG.AKARTIS</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .page { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
+    .page h1 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 16px; }
+    .page h2 { font-size: 1.25rem; margin: 28px 0 10px; color: var(--brand-blue); }
+    .page p, .page li { color: var(--text-muted); line-height: 1.7; margin-bottom: 10px; }
+    .card { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin: 16px 0; }
+    .back { display: inline-block; margin-bottom: 24px; color: var(--brand-blue); font-weight: 500; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo"><span class="logo-icon">⚡</span><span class="logo-text">PROG<span class="logo-tech">.AKARTIS</span></span></a>
+      <a href="app.html" class="btn btn-primary">COMMENCER À APPRENDRE</a>
+    </div>
+  </header>
+  <div class="page">
+    <a class="back" href="index.html">← Accueil</a>
+    <h1>Pour les enseignants</h1>
+    <p>Utilise cette plateforme en classe ou en atelier : les élèves progressent sur leur machine, sans compte cloud.</p>
+    <div class="card">
+      <h2>Idées d’usage</h2>
+      <ul>
+        <li>Assigner un cours (ex. Python leçons 1–5) puis le quiz associé</li>
+        <li>Utiliser le Playground pour des démos en direct</li>
+        <li>Les certificats de fin de cours motivent la complétion</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Limites du PROG.AKARTIS</h2>
+      <p>Pas de tableau de bord enseignant multi-élèves : chaque navigateur a sa propre progression. Pour un suivi de classe, exportez manuellement ou notez les certificats affichés.</p>
+    </div>
+    <p><a href="app.html" class="btn btn-primary">Voir le catalogue des cours</a></p>
+  </div>
+  <script>if (localStorage.getItem("prog-akartis-theme") === "dark") document.body.classList.add("dark");</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carrières · PROG.AKARTIS</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .page { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
+    .page h1 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 16px; }
+    .page p { color: var(--text-muted); line-height: 1.7; margin-bottom: 12px; }
+    .job { border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin: 16px 0; background: var(--bg-alt); }
+    .job h3 { margin-bottom: 6px; }
+    .job span { font-size: 0.85rem; color: var(--brand-blue); }
+    .back { display: inline-block; margin-bottom: 24px; color: var(--brand-blue); font-weight: 500; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo"><span class="logo-icon">⚡</span><span class="logo-text">PROG<span class="logo-tech">.AKARTIS</span></span></a>
+      <a href="app.html" class="btn btn-primary">COMMENCER À APPRENDRE</a>
+    </div>
+  </header>
+  <div class="page">
+    <a class="back" href="index.html">← Accueil</a>
+    <h1>Carrières</h1>
+    <p>Page fictive de PROG.AKARTIS. Sur le vrai PROG.AKARTIS, les offres seraient listées ici. Ci-dessous : exemples pour le design.</p>
+    <div class="job">
+      <h3>Développeur·se front-end (exemple)</h3>
+      <span>Remote · Temps plein</span>
+      <p>HTML, CSS, JS — et une passion pour l’éducation.</p>
+    </div>
+    <div class="job">
+      <h3>Créateur·rice de contenu pédagogique (exemple)</h3>
+      <span>Remote · Freelance</span>
+      <p>Rédiger des leçons interactives Python, SQL, Git…</p>
+    </div>
+    <p>Pour le vrai site : <em>prog.akartis</em> (cette plateforme n’accepte pas de candidatures).</p>
+  </div>
+  <script>if (localStorage.getItem("prog-akartis-theme") === "dark") document.body.classList.add("dark");</script>
+</body>
+</html>

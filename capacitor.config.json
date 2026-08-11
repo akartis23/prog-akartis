@@ -1,0 +1,11 @@
+{
+  "appId": "com.akartis.prog",
+  "appName": "PROG.AKARTIS",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}

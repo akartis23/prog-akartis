@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Outils · PROG.AKARTIS</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    .page { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
+    .page h1 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 8px; }
+    .subtitle { color: var(--text-muted); margin-bottom: 28px; }
+    .tool { border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin-bottom: 20px; background: var(--bg-alt); }
+    .tool h2 { font-size: 1.1rem; margin-bottom: 12px; color: var(--brand-blue); }
+    textarea, input[type=text] {
+      width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border);
+      background: var(--bg); color: var(--text); font-family: "JetBrains Mono", monospace; font-size: 0.9rem;
+    }
+    textarea { min-height: 100px; resize: vertical; }
+    .row { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+    .out { margin-top: 10px; padding: 12px; background: #1e1e2e; color: #6ee7a0; border-radius: 10px;
+      font-family: "JetBrains Mono", monospace; font-size: 0.85rem; white-space: pre-wrap; min-height: 40px; }
+    .back { display: inline-block; margin-bottom: 24px; color: var(--brand-blue); font-weight: 500; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo"><span class="logo-icon">⚡</span><span class="logo-text">PROG<span class="logo-tech">.AKARTIS</span></span></a>
+      <a href="app.html" class="btn btn-primary">COMMENCER À APPRENDRE</a>
+    </div>
+  </header>
+  <div class="page">
+    <a class="back" href="index.html">← Accueil</a>
+    <h1>Outils</h1>
+    <p class="subtitle">Petits utilitaires locaux — tout reste dans ton navigateur.</p>
+
+    <div class="tool">
+      <h2>JSON Formatter</h2>
+      <textarea id="json-in" placeholder='{"nom":"Alex","age":20}'></textarea>
+      <div class="row">
+        <button class="btn btn-primary" id="json-fmt">Formater</button>
+        <button class="btn btn-outline" id="json-min">Minifier</button>
+      </div>
+      <div class="out" id="json-out"></div>
+    </div>
+
+    <div class="tool">
+      <h2>Base64 Encode / Decode</h2>
+      <textarea id="b64-in" placeholder="Texte à encoder…"></textarea>
+      <div class="row">
+        <button class="btn btn-primary" id="b64-enc">Encoder</button>
+        <button class="btn btn-outline" id="b64-dec">Décoder</button>
+      </div>
+      <div class="out" id="b64-out"></div>
+    </div>
+
+    <div class="tool">
+      <h2>Compteur de caractères / mots</h2>
+      <textarea id="count-in" placeholder="Colle ton texte…"></textarea>
+      <div class="out" id="count-out">0 caractères · 0 mots · 0 lignes</div>
+    </div>
+
+    <div class="tool">
+      <h2>Générateur de mot de passe</h2>
+      <div class="row">
+        <button class="btn btn-primary" id="pw-gen">Générer (16 car.)</button>
+      </div>
+      <div class="out" id="pw-out"></div>
+    </div>
+
+    <p><a href="app.html?view=playground" class="btn btn-outline">Ouvrir le Playground code</a></p>
+  </div>
+  <script>
+    if (localStorage.getItem("prog-akartis-theme") === "dark") document.body.classList.add("dark");
+
+    document.getElementById("json-fmt").onclick = () => {
+      const el = document.getElementById("json-out");
+      try {
+        el.textContent = JSON.stringify(JSON.parse(document.getElementById("json-in").value), null, 2);
+      } catch (e) { el.textContent = "Erreur : " + e.message; }
+    };
+    document.getElementById("json-min").onclick = () => {
+      const el = document.getElementById("json-out");
+      try {
+        el.textContent = JSON.stringify(JSON.parse(document.getElementById("json-in").value));
+      } catch (e) { el.textContent = "Erreur : " + e.message; }
+    };
+    document.getElementById("b64-enc").onclick = () => {
+      try {
+        document.getElementById("b64-out").textContent = btoa(unescape(encodeURIComponent(document.getElementById("b64-in").value)));
+      } catch (e) { document.getElementById("b64-out").textContent = e.message; }
+    };
+    document.getElementById("b64-dec").onclick = () => {
+      try {
+        document.getElementById("b64-out").textContent = decodeURIComponent(escape(atob(document.getElementById("b64-in").value)));
+      } catch (e) { document.getElementById("b64-out").textContent = "Erreur de décodage"; }
+    };
+    document.getElementById("count-in").oninput = () => {
+      const t = document.getElementById("count-in").value;
+      const words = t.trim() ? t.trim().split(/\s+/).length : 0;
+      document.getElementById("count-out").textContent =
+        t.length + " caractères · " + words + " mots · " + (t.split("\n").length) + " lignes";
+    };
+    document.getElementById("pw-gen").onclick = () => {
+      const chars = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789!@#$%";
+      let p = "";
+      for (let i = 0; i < 16; i++) p += chars[Math.floor(Math.random() * chars.length)];
+      document.getElementById("pw-out").textContent = p;
+    };
+  </script>
+</body>
+</html>
