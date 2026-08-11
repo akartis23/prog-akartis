@@ -1192,3 +1192,43 @@ body.dark .ex-item { background: #1c2330; }
     animation: none !important;
   }
 }
+
+
+/* Language icons (Devicon SVG) */
+.lang-icon {
+  display: inline-block;
+  vertical-align: middle;
+  object-fit: contain;
+  border-radius: 6px;
+}
+.course-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  margin-bottom: 10px;
+}
+.course-icon .lang-icon {
+  width: 48px;
+  height: 48px;
+}
+.big-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.big-icon .lang-icon {
+  width: 56px;
+  height: 56px;
+}
+.ex-lang-tabs .tab .lang-icon,
+.pg-lang-tabs .tab .lang-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+}
+.lang-icon-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

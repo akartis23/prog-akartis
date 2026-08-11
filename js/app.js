@@ -1,43 +1,49 @@
 // ===== Languages for marquee =====
 const languages = [
-  { name: "Python", icon: "🐍" },
-  { name: "JavaScript", icon: "JS" },
-  { name: "TypeScript", icon: "TS" },
-  { name: "Java", icon: "☕" },
-  { name: "C++", icon: "➕" },
-  { name: "C", icon: "C" },
-  { name: "C#", icon: "#" },
-  { name: "Go", icon: "🐹" },
-  { name: "Rust", icon: "🦀" },
-  { name: "SQL", icon: "🗃️" },
-  { name: "PHP", icon: "🐘" },
-  { name: "Ruby", icon: "💎" },
-  { name: "Swift", icon: "🐦" },
-  { name: "Kotlin", icon: "K" },
-  { name: "Dart", icon: "🎯" },
-  { name: "Bash", icon: "🐚" },
-  { name: "Elixir", icon: "💧" },
-  { name: "Haskell", icon: "λ" },
-  { name: "Scala", icon: "🔴" },
-  { name: "Zig", icon: "⚡" },
-  { name: "Lua", icon: "🌙" },
-  { name: "R", icon: "📊" },
-  { name: "Perl", icon: "🐪" },
-  { name: "Solidity", icon: "⬡" },
-  { name: "Assembly", icon: "⚙️" },
+  { id: "python", name: "Python" },
+  { id: "javascript", name: "JavaScript" },
+  { id: "typescript", name: "TypeScript" },
+  { id: "java", name: "Java" },
+  { id: "cpp", name: "C++" },
+  { id: "c", name: "C" },
+  { id: "csharp", name: "C#" },
+  { id: "go", name: "Go" },
+  { id: "rust", name: "Rust" },
+  { id: "sql", name: "SQL" },
+  { id: "php", name: "PHP" },
+  { id: "ruby", name: "Ruby" },
+  { id: "swift", name: "Swift" },
+  { id: "kotlin", name: "Kotlin" },
+  { id: "dart", name: "Dart" },
+  { id: "bash", name: "Bash" },
+  { id: "elixir", name: "Elixir" },
+  { id: "haskell", name: "Haskell" },
+  { id: "scala", name: "Scala" },
+  { id: "zig", name: "Zig" },
+  { id: "lua", name: "Lua" },
+  { id: "r", name: "R" },
+  { id: "perl", name: "Perl" },
+  { id: "solidity", name: "Solidity" },
+  { id: "docker", name: "Docker" },
+  { id: "git", name: "Git" },
+  { id: "flutter", name: "Flutter" },
 ];
 
 function initMarquee() {
+  // utilise les icônes locales si disponibles
+
   const el = document.getElementById("lang-marquee");
   if (!el) return;
 
   // Duplicate for seamless loop
   const items = [...languages, ...languages];
   el.innerHTML = items
-    .map(
-      (l) =>
-        `<span class="lang-pill"><span class="icon">${l.icon}</span> ${l.name}</span>`
-    )
+    .map((l) => {
+      const ic = window.akartisIcon
+        ? window.akartisIcon(l.id, 20, "")
+        : "";
+      return `<span class="lang-pill">${ic} ${l.name}</span>`;
+    })
     .join("");
 }
 

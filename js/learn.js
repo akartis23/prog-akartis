@@ -24,6 +24,12 @@
     return document.querySelectorAll(sel);
   }
 
+  function courseIcon(c, size) {
+    size = size || 40;
+    if (window.akartisIcon) return window.akartisIcon(c.id, size, c.icon);
+    return `<span class="lang-icon-fallback">${c.icon || "📄"}</span>`;
+  }
+
   function showToast(msg, type = "") {
     const t = $("#toast");
     t.textContent = msg;
@@ -71,7 +77,7 @@
       card.className = "course-card";
       card.innerHTML = `
         ${done ? '<span class="badge-done">Terminé</span>' : ""}
-        <div class="course-icon">${c.icon}</div>
+        <div class="course-icon">${courseIcon(c, 48)}</div>
         <h3>${c.name}</h3>
         <p>${c.description}</p>
         <div class="course-meta">
@@ -94,7 +100,7 @@
     const header = $("#course-header");
     const pct = Progress.coursePercent(courseId);
     header.innerHTML = `
-      <div class="big-icon">${c.icon}</div>
+      <div class="big-icon">${courseIcon(c, 56)}</div>
       <div>
         <h1>${c.name}</h1>
         <div class="desc">${c.description}</div>
@@ -287,7 +293,7 @@
       tabs.innerHTML = langs
         .map((l) => {
           const c = window.AKARTIS_COURSES[l];
-          const label = c ? c.icon + " " + c.name : l;
+          const label = c ? courseIcon(c, 18) + " " + c.name : l;
           return `<button class="tab ${l === lang ? "active" : ""}" data-lang="${l}">${label}</button>`;
         })
         .join("");
@@ -399,7 +405,7 @@
       const card = document.createElement("div");
       card.className = "quiz-card-item";
       card.innerHTML = `
-        <h3>${course ? course.icon + " " : ""}${qz.title}</h3>
+        <h3>${course ? courseIcon(course, 22) + " " : ""}${qz.title}</h3>
         <p>${qz.questions.length} questions · +${qz.xp} XP (si ≥ 50%)</p>
         <div class="quiz-meta">
           <span>${course ? course.name : id}</span>
@@ -561,7 +567,7 @@
       if (pct === 0) return;
       html += `
         <div class="lesson-item" style="margin-bottom:10px;cursor:pointer" data-course="${id}">
-          <div class="num">${c.icon}</div>
+          <div class="num">${courseIcon(c, 28)}</div>
           <div class="info">
             <strong>${c.name}</strong>
             <span>${pct}% · ${Progress.getCourseProgress(id).completed.length}/${c.lessons.length} leçons</span>
@@ -666,7 +672,7 @@
       sel.innerHTML = ids
         .map((id) => {
           const c = window.AKARTIS_COURSES[id];
-          const label = c ? `${c.icon || ""} ${c.name}`.trim() : id;
+          const label = c ? c.name : id;
           return `<option value="${id}">${label}</option>`;
         })
         .join("");
@@ -674,8 +680,9 @@
       tabs.innerHTML = ids
         .map((id) => {
           const c = window.AKARTIS_COURSES[id];
-          const label = c ? `${c.icon || ""} ${c.name}`.trim() : id;
-          return `<button type="button" class="tab" data-lang="${id}" title="${c ? c.name : id}">${label}</button>`;
+          const label = c ? c.name : id;
+          const ic = c && window.akartisIcon ? window.akartisIcon(id, 16, c.icon) : "";
+          return `<button type="button" class="tab" data-lang="${id}" title="${c ? c.name : id}">${ic} ${label}</button>`;
         })
         .join("");
 
