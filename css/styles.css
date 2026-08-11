@@ -11,12 +11,12 @@
   --border-strong: rgba(255,255,255,0.14);
   --text: #eef2ff;
   --text-muted: #9aa3c0;
-  --accent: #a78bfa;
+  --accent: #29abe2;
   --accent-2: #f59e0b;
   --accent-3: #34d399;
-  --brand-blue: #a78bfa;
-  --brand-blue-dark: #8b5cf6;
-  --brand-blue-light: rgba(167, 139, 250, 0.15);
+  --brand-blue: #29abe2;
+  --brand-blue-dark: #1c8ac0;
+  --brand-blue-light: rgba(41, 171, 226, 0.15);
   --radius: 16px;
   --radius-sm: 10px;
   --shadow: 0 20px 50px rgba(0,0,0,0.35);
@@ -37,16 +37,16 @@ body {
 
 /* Light mode override when NOT dark class - site is dark-first */
 body:not(.dark) {
-  --bg: #f4f1eb;
+  --bg: #f5f9fc;
   --bg-elevated: #ffffff;
   --bg-card: #ffffff;
-  --bg-alt: #ebe6dc;
+  --bg-alt: #e9f4fb;
   --surface: #fff;
-  --border: rgba(20, 16, 40, 0.1);
-  --border-strong: rgba(20, 16, 40, 0.16);
-  --text: #141028;
-  --text-muted: #5c5675;
-  --shadow: 0 16px 40px rgba(20, 16, 40, 0.08);
+  --border: rgba(15, 30, 45, 0.1);
+  --border-strong: rgba(15, 30, 45, 0.16);
+  --text: #0f2233;
+  --text-muted: #5a7185;
+  --shadow: 0 16px 40px rgba(15, 30, 45, 0.08);
 }
 
 body.dark {
@@ -104,7 +104,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-radius: 10px;
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
   font-size: 1rem;
-  box-shadow: 0 0 24px rgba(167,139,250,0.35);
+  box-shadow: 0 0 24px rgba(41,171,226,0.35);
 }
 
 .logo-tech {
@@ -173,9 +173,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .btn:hover { transform: translateY(-1px); }
 .btn-primary {
-  background: linear-gradient(135deg, #8b5cf6, #f59e0b);
+  background: linear-gradient(135deg, #29abe2, #f59e0b);
   color: #0b0f1a;
-  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.35);
+  box-shadow: 0 8px 24px rgba(28, 138, 192, 0.35);
 }
 .btn-primary:hover { filter: brightness(1.05); }
 .btn-outline {
@@ -228,7 +228,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   inset: -20% -10% auto;
   height: 70%;
   background:
-    radial-gradient(ellipse at 20% 30%, rgba(167,139,250,0.25), transparent 50%),
+    radial-gradient(ellipse at 20% 30%, rgba(41,171,226,0.25), transparent 50%),
     radial-gradient(ellipse at 80% 20%, rgba(245,158,11,0.18), transparent 45%);
   pointer-events: none;
 }
@@ -345,7 +345,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .course-card:hover, .lang-card:hover {
   transform: translateY(-4px);
   border-color: var(--accent);
-  box-shadow: 0 12px 32px rgba(167,139,250,0.15);
+  box-shadow: 0 12px 32px rgba(41,171,226,0.15);
 }
 .course-card .icon, .lang-card .icon { font-size: 1.8rem; margin-bottom: 8px; }
 .course-card h3, .lang-card h3 { font-size: 1rem; font-weight: 600; }
@@ -485,7 +485,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   padding: 80px 0;
   text-align: center;
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(167,139,250,0.2), transparent 60%);
+    radial-gradient(ellipse at 50% 0%, rgba(41,171,226,0.2), transparent 60%);
 }
 .cta-section h2 {
   font-family: var(--font-display);
@@ -571,8 +571,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   50% { transform: translateY(-10px); }
 }
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(167, 139, 250, 0.35); }
-  50% { box-shadow: 0 0 0 12px rgba(167, 139, 250, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(41, 171, 226, 0.35); }
+  50% { box-shadow: 0 0 0 12px rgba(41, 171, 226, 0); }
 }
 @keyframes shimmer {
   0% { background-position: -200% 0; }
@@ -631,7 +631,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* Primary button shimmer */
 .btn-primary {
   background-size: 200% 200%;
-  background-image: linear-gradient(135deg, #8b5cf6, #f59e0b, #8b5cf6);
+  background-image: linear-gradient(135deg, #29abe2, #f59e0b, #1c8ac0);
   animation: gradient-shift 4s ease infinite;
   position: relative;
   overflow: hidden;
@@ -734,4 +734,44 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   height: 20px;
   margin-right: 6px;
   vertical-align: middle;
+}
+
+
+/* === Force language icons visible === */
+.course-icon,
+.big-icon,
+.lang-icon-wrap {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+}
+.course-icon {
+  height: 56px !important;
+  margin-bottom: 12px;
+  font-size: 0 !important; /* hide leftover emoji text nodes */
+}
+.course-icon .lang-icon,
+.big-icon .lang-icon,
+.lang-icon {
+  width: 48px !important;
+  height: 48px !important;
+  max-width: 100%;
+  object-fit: contain !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.big-icon .lang-icon {
+  width: 56px !important;
+  height: 56px !important;
+}
+.pg-lang-tabs .tab .lang-icon,
+.ex-lang-tabs .tab .lang-icon {
+  width: 18px !important;
+  height: 18px !important;
+  display: inline-block !important;
+}
+.course-card .course-icon {
+  font-size: 0 !important;
 }
