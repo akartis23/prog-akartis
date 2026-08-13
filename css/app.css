@@ -741,3 +741,199 @@ body.dark .quiz-choice.wrong { background: rgba(239, 68, 68, 0.15); }
   }
   .view { padding: 20px 0 48px; }
 }
+
+/* =========================================================
+   APP RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .app-header-inner {
+    padding: 0 14px;
+  }
+}
+
+@media (max-width: 900px) {
+  .lesson-layout {
+    grid-template-columns: 1fr;
+  }
+  .lesson-sidebar {
+    max-height: none;
+    border-right: none;
+    border-bottom: 1px solid var(--border, #e2e8f0);
+    padding: 16px;
+  }
+  .lesson-editor-panel {
+    min-height: 45vh;
+  }
+  .app-nav {
+    gap: 2px;
+  }
+  .app-nav-btn {
+    font-size: 0.78rem;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 700px) {
+  .app-header-inner {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 56px;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+  .app-nav {
+    order: 3;
+    width: 100%;
+    padding-bottom: 4px;
+  }
+  .course-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .course-card {
+    padding: 14px 10px;
+  }
+  .course-card h3 {
+    font-size: 0.95rem;
+  }
+  .course-card p {
+    font-size: 0.75rem;
+    -webkit-line-clamp: 2;
+  }
+  .quiz-list,
+  .ex-list {
+    grid-template-columns: 1fr;
+  }
+  .dash-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .pg-lang-tabs .tab,
+  .ex-lang-tabs .tab {
+    font-size: 0.72rem;
+    padding: 6px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header .logo-text {
+    font-size: 0.9rem;
+  }
+  .stat-pill {
+    font-size: 0.68rem;
+    padding: 4px 7px;
+  }
+  [data-auth-area] .btn {
+    font-size: 0.7rem;
+    padding: 5px 8px;
+  }
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+  .view-title {
+    font-size: 1.35rem;
+  }
+  .view-subtitle {
+    font-size: 0.9rem;
+  }
+  .view {
+    padding: 16px 0 40px;
+  }
+  .lesson-item {
+    padding: 12px;
+    gap: 10px;
+  }
+  .quiz-question-box {
+    padding: 16px;
+  }
+  .quiz-question-box h2 {
+    font-size: 1.05rem;
+  }
+  .toast {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+  }
+  #pg-code,
+  .pg-code,
+  textarea.code-input,
+  #code-editor {
+    min-height: 180px;
+    font-size: 0.82rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .app-header-inner {
+    max-width: 1200px;
+  }
+  .course-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+
+/* Rich lesson theory */
+.theory-rich {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.theory-block {
+  padding: 14px 16px;
+  background: var(--bg-alt, #f5f8fc);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 12px;
+}
+.theory-block h4 {
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  color: var(--text, #1a1a2e);
+}
+.theory-block p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-muted, #5a5a6e);
+  margin-bottom: 8px;
+}
+.theory-block ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--text-muted, #5a5a6e);
+  font-size: 0.9rem;
+}
+.theory-block li {
+  margin-bottom: 4px;
+  list-style: disc;
+}
+.theory-block pre {
+  margin: 10px 0;
+  padding: 12px;
+  background: #1e1e2e;
+  color: #a6e3a1;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.theory-block code {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.88em;
+  background: rgba(43, 159, 255, 0.1);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+.theory-block pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+.theory-challenge-hint {
+  border-left: 4px solid var(--brand-blue, #2b9fff);
+  background: var(--brand-blue-light, #e8f4ff);
+}
+body.dark .theory-block {
+  background: #161d27;
+}
+body.dark .theory-challenge-hint {
+  background: rgba(43, 159, 255, 0.12);
+}
