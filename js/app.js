@@ -52,20 +52,28 @@ function initCalendar() {
   const grid = document.getElementById("calendar-grid");
   if (!grid) return;
 
-  const today = 11; // August 11 for demo
-  const daysInMonth = 31;
-  const firstDayOffset = 5; // Friday (example)
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth(); // 0-11
+  const today = now.getDate();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  // JS: 0=Sun ... convert to Mon-first offset
+  let firstDow = new Date(year, month, 1).getDay(); // 0 Sun
+  firstDow = (firstDow + 6) % 7; // Monday = 0
 
-  let html = "";
-  // empty cells for offset
-  for (let i = 0; i < firstDayOffset; i++) {
-    html += `<div class="cal-day"></div>`;
-  }
+  const monthNames = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
+  const header = document.getElementById("calendar-month");
+  if (header) header.textContent = monthNames[month] + " " + year;
 
+  // week day labels
+  let html = ["L","M","M","J","V","S","D"].map(d => `<div class="cal-day cal-label">${d}</div>`).join("");
+  for (let i = 0; i < firstDow; i++) html += `<div class="cal-day empty"></div>`;
+
+  // demo: mark last 7 days before today as done (série)
   for (let d = 1; d <= daysInMonth; d++) {
     let cls = "cal-day";
-    if (d <= 10) cls += " done";
-    if (d === today) cls += " today";
+    if (d < today && d >= today - 7) cls += " done";
+    if (d === today) cls += " today done";
     html += `<div class="${cls}">${d}</div>`;
   }
   grid.innerHTML = html;
@@ -246,6 +254,26 @@ document.addEventListener("DOMContentLoaded", () => {
       { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
     document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+
+
+/* Mobile nav toggle */
+(function initMobileNav() {
+  function run() {
+    const btn = document.getElementById("mobile-menu-btn");
+    const nav = document.querySelector("header .nav");
+    if (!btn || !nav) return;
+    btn.addEventListener("click", () => {
+      nav.classList.toggle("nav-open");
+    });
+    document.addEventListener("click", (e) => {
+      if (!nav.contains(e.target) && !btn.contains(e.target)) {
+        nav.classList.remove("nav-open");
+      }
+    });
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
   else run();

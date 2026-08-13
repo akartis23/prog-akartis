@@ -191,8 +191,42 @@
   <section class="section catalog-section" id="catalog">
     <div class="container">
       <h2>Parcourez le catalogue complet</h2>
-      <p class="section-desc">Tous les cours PROG.AKARTIS au même endroit – des leçons interactives dans plus de 20 langages de programmation, exécutables dans votre navigateur.</p>
-      <a href="#" class="link-arrow">Voir tous les cours →</a>
+      <p class="section-desc">Tous les cours PROG.AKARTIS au même endroit — des leçons interactives dans 50+ langages, exécutables dans votre navigateur.</p>
+      <div class="home-course-grid">
+        <a class="home-course-card" href="app.html?course=python">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="" width="40" height="40" />
+          <h3>Python</h3>
+          <p>55 leçons · Débutant → Avancé</p>
+        </a>
+        <a class="home-course-card" href="app.html?course=javascript">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="" width="40" height="40" />
+          <h3>JavaScript</h3>
+          <p>55 leçons · Web & Node</p>
+        </a>
+        <a class="home-course-card" href="app.html?course=sql">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="" width="40" height="40" />
+          <h3>SQL</h3>
+          <p>55 leçons · Bases de données</p>
+        </a>
+        <a class="home-course-card" href="app.html?course=java">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="" width="40" height="40" />
+          <h3>Java</h3>
+          <p>55 leçons · OOP & JVM</p>
+        </a>
+        <a class="home-course-card" href="app.html?course=rust">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rust/rust-original.svg" alt="" width="40" height="40" />
+          <h3>Rust</h3>
+          <p>55 leçons · Systèmes</p>
+        </a>
+        <a class="home-course-card" href="app.html?course=go">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg" alt="" width="40" height="40" />
+          <h3>Go</h3>
+          <p>55 leçons · Backend</p>
+        </a>
+      </div>
+      <div class="section-cta">
+        <a href="app.html" class="btn btn-primary">Voir tous les cours →</a>
+      </div>
     </div>
   </section>
 
@@ -256,7 +290,7 @@ function sayHi(name) {
           <p>Revenez demain pour maintenir votre série !</p>
         </div>
         <div class="calendar">
-          <div class="calendar-header">Août 2026</div>
+          <div class="calendar-header" id="calendar-month">Août 2026</div>
           <div class="calendar-grid" id="calendar-grid">
             <!-- filled by JS -->
           </div>
