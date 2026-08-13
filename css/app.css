@@ -1,3 +1,9 @@
+/* App shell — aligné design Coddy */
+:root {
+  --brand-blue: #2b9fff;
+  --brand-blue-dark: #1a8aee;
+  --brand-blue-light: #e8f4ff;
+}
 /* PROG.AKARTIS app shell — aligns with main design system */
 #app {
   min-height: 100vh;
@@ -1231,4 +1237,18 @@ body.dark .ex-item { background: #1c2330; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+.logo-mark {
+  flex-shrink: 0;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(43, 159, 255, 0.25));
+}
+.app-header .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display, "Varela Round", sans-serif);
+  font-weight: 700;
+  color: var(--brand-blue, #2b9fff);
 }

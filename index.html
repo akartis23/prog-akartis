@@ -8,14 +8,65 @@
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+  <style>
+    .mascot-3d-wrap {
+      width: 100%;
+      max-width: 380px;
+      height: 380px;
+      margin: 0 auto;
+      position: relative;
+    }
+    model-viewer.mascot-3d {
+      width: 100%;
+      height: 100%;
+      --poster-color: transparent;
+      background: transparent;
+      cursor: grab;
+    }
+    model-viewer.mascot-3d:active { cursor: grabbing; }
+    .mascot-3d-fallback {
+      display: none;
+    }
+    .mascot-3d-wrap.fallback .mascot-3d { display: none; }
+    .mascot-3d-wrap.fallback .mascot-3d-fallback { display: block; }
+    .mascot-hint {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted, #5a5a6e);
+      margin-top: 4px;
+      opacity: 0.8;
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
   <header class="header">
     <div class="container header-inner">
       <a href="index.html" class="logo">
-        <span class="logo-icon">⚡</span>
+        <svg class="logo-mark" width="36" height="36" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="cb" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5ec0ff"/>
+      <stop offset="100%" stop-color="#2b9fff"/>
+    </linearGradient>
+  </defs>
+  <!-- antenna -->
+  <rect x="30" y="4" width="4" height="12" rx="2" fill="#2b9fff"/>
+  <circle cx="32" cy="5" r="5" fill="#5ec0ff"/>
+  <!-- head -->
+  <ellipse cx="32" cy="34" rx="22" ry="20" fill="url(#cb)"/>
+  <!-- glasses frame -->
+  <rect x="12" y="28" width="16" height="12" rx="3" fill="#0d2137"/>
+  <rect x="36" y="28" width="16" height="12" rx="3" fill="#0d2137"/>
+  <rect x="28" y="32" width="8" height="3" fill="#0d2137"/>
+  <!-- eyes glow -->
+  <circle cx="20" cy="33" r="3.2" fill="#7dffb3"/>
+  <circle cx="44" cy="33" r="3.2" fill="#7dffb3"/>
+  <!-- smile -->
+  <path d="M26 42 Q32 48 38 42" stroke="#0d2137" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+</svg>
         <span class="logo-text">PROG<span class="logo-tech">.AKARTIS</span></span>
       </a>
 
@@ -45,7 +96,7 @@
             <a href="tools.html">Outils</a>
             <a href="app.html?view=playground">Playground</a>
             <a href="app.html?view=exercises">Exercices pratiques</a>
-            <a href="app.html?view=dashboard">Tableau de bord</a>
+            <a href="app.html?view=dashboard">J'AI DÉJÀ UN COMPTE</a>
           </div>
         </div>
         <div class="nav-item dropdown">
@@ -59,7 +110,7 @@
       </nav>
 
       <div class="header-actions">
-        <a href="app.html" class="btn btn-primary" id="btn-start">Lancer l’app</a>
+        <a href="app.html" class="btn btn-primary" id="btn-start">COMMENCER À APPRENDRE</a>
         <button class="btn-icon" title="Mode sombre" id="theme-toggle">🌙</button>
         <div class="lang-selector">
           <button class="lang-btn">🇫🇷 Français ▾</button>
@@ -76,30 +127,53 @@
   <section class="hero">
     <div class="container hero-inner">
       <div class="hero-mascot">
-        <div class="bit-robot">
-          <div class="bit-antenna"></div>
-          <div class="bit-head">
-            <div class="bit-glasses">
-              <div class="bit-eye left"></div>
-              <div class="bit-eye right"></div>
+        <div class="mascot-3d-wrap" id="mascot-3d-wrap">
+          <model-viewer
+            class="mascot-3d"
+            src="https://modelviewer.dev/shared-assets/models/RobotExpressive.glb"
+            alt="Mascotte 3D PROG.AKARTIS"
+            camera-controls
+            auto-rotate
+            auto-rotate-delay="0"
+            rotation-per-second="25deg"
+            interaction-prompt="none"
+            shadow-intensity="0.6"
+            exposure="1.1"
+            camera-orbit="25deg 75deg 105%"
+            min-camera-orbit="auto auto 60%"
+            max-camera-orbit="auto auto 150%"
+            touch-action="pan-y"
+            loading="eager"
+            id="mascot-viewer"
+          ></model-viewer>
+          <div class="mascot-3d-fallback">
+            <div class="bit-robot">
+              <div class="bit-antenna"></div>
+              <div class="bit-head">
+                <div class="bit-glasses">
+                  <div class="bit-eye left"></div>
+                  <div class="bit-eye right"></div>
+                </div>
+                <div class="bit-smile"></div>
+              </div>
+              <div class="bit-body">
+                <div class="bit-arm left"></div>
+                <div class="bit-arm right"></div>
+                <div class="bit-leg left"></div>
+                <div class="bit-leg right"></div>
+              </div>
             </div>
-            <div class="bit-smile"></div>
           </div>
-          <div class="bit-body">
-            <div class="bit-arm left"></div>
-            <div class="bit-arm right"></div>
-            <div class="bit-leg left"></div>
-            <div class="bit-leg right"></div>
-          </div>
+          <p class="mascot-hint">Glisse pour faire tourner la mascotte 3D</p>
         </div>
       </div>
 
       <div class="hero-content">
-        <h1>Code. Progresse. Maîtrise.</h1>
-        <p class="hero-subtitle">Plateforme locale par <strong>Akartis</strong> — leçons, quiz, exercices</p>
+        <h1>La façon gratuite, amusante et<br>efficace d'apprendre à coder !</h1>
+        <p class="hero-subtitle">Rejoignez plus de <strong>4,681,862</strong> codeurs</p>
         <div class="hero-buttons">
-          <a href="app.html" class="btn btn-primary btn-lg" id="btn-commencer">Commencer</a>
-          <a href="app.html" class="btn btn-outline btn-lg">Tableau de bord</a>
+          <a href="app.html" class="btn btn-primary btn-lg" id="btn-commencer">COMMENCER</a>
+          <a href="app.html" class="btn btn-outline btn-lg">J'AI DÉJÀ UN COMPTE</a>
         </div>
         <div class="hero-ratings">
           <span class="rating-badge">⭐ 4.9 App Store (1K+)</span>
@@ -110,7 +184,7 @@
   </section>
 
   <!-- Language marquee -->
-  <div class="lang-marquee-wrapper">
+  <div class="lang-marquee-section"><div class="lang-marquee-wrap">
     <div class="lang-marquee" id="lang-marquee">
       <!-- filled by JS -->
     </div>
@@ -373,7 +447,7 @@ function sayHi(name) {
   <section class="section cta-section">
     <div class="container">
       <h2>Apprendre à coder avec PROG.AKARTIS</h2>
-      <a href="app.html" class="btn btn-primary btn-lg">Commencer</a>
+      <a href="app.html" class="btn btn-primary btn-lg">COMMENCER</a>
     </div>
   </section>
 
@@ -422,5 +496,30 @@ function sayHi(name) {
 
   <script src="assets/icons/map.js"></script>
   <script src="js/app.js"></script>
+
+  <script>
+    (function () {
+      var wrap = document.getElementById("mascot-3d-wrap");
+      var viewer = document.getElementById("mascot-viewer");
+      if (!wrap || !viewer) return;
+      var failed = false;
+      function showFallback() {
+        if (failed) return;
+        failed = true;
+        wrap.classList.add("fallback");
+      }
+      viewer.addEventListener("error", showFallback);
+      // si model-viewer non supporté / timeout réseau
+      setTimeout(function () {
+        if (!viewer.loaded) {
+          // model-viewer sets loaded when model ready; if still not after 8s, fallback
+          try {
+            if (!viewer.getModel || !viewer.model) showFallback();
+          } catch (e) { showFallback(); }
+        }
+      }, 8000);
+    })();
+  </script>
+
 </body>
 </html>
