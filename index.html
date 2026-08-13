@@ -110,11 +110,12 @@
       </nav>
 
       <div class="header-actions">
+        <div data-auth-area>
+          <button type="button" class="btn btn-outline btn-sm" data-auth-open="login">Connexion</button>
+          <button type="button" class="btn btn-primary btn-sm" data-auth-open="register">S'inscrire</button>
+        </div>
         <a href="app.html" class="btn btn-primary" id="btn-start">COMMENCER À APPRENDRE</a>
         <button class="btn-icon" title="Mode sombre" id="theme-toggle">🌙</button>
-        <div class="lang-selector">
-          <button class="lang-btn">🇫🇷 Français ▾</button>
-        </div>
       </div>
 
       <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
@@ -173,11 +174,7 @@
         <p class="hero-subtitle">Rejoignez plus de <strong>4,681,862</strong> codeurs</p>
         <div class="hero-buttons">
           <a href="app.html" class="btn btn-primary btn-lg" id="btn-commencer">COMMENCER</a>
-          <a href="app.html" class="btn btn-outline btn-lg">J'AI DÉJÀ UN COMPTE</a>
-        </div>
-        <div class="hero-ratings">
-          <span class="rating-badge">⭐ 4.9 App Store (1K+)</span>
-          <span class="rating-badge">⭐ 4.8 Google Play (5K+)</span>
+          <button type="button" class="btn btn-outline btn-lg" data-auth-open="login">J'AI DÉJÀ UN COMPTE</button>
         </div>
       </div>
     </div>
@@ -278,42 +275,8 @@ function sayHi(name) {
     </div>
   </section>
 
-  <!-- Mobile -->
-  <section class="section mobile-section">
-    <div class="container">
-      <h2>Codez Partout, À Tout Moment</h2>
-      <p class="section-desc">Emportez votre parcours de codage avec vous ! Pas de configuration, pas de téléchargements – ouvrez et commencez à coder. Disponible sur iOS, Android et Web avec des notes de 4.9 étoiles.</p>
-      <div class="store-buttons">
-        <a href="#" class="store-btn">
-          <span class="store-icon"></span>
-          <div>
-            <small>Télécharger sur</small>
-            <strong>App Store</strong>
-          </div>
-        </a>
-        <a href="#" class="store-btn">
-          <span class="store-icon">▶</span>
-          <div>
-            <small>Disponible sur</small>
-            <strong>Google Play</strong>
-          </div>
-        </a>
-      </div>
-      <div class="mobile-preview">
-        <div class="phone">
-          <div class="phone-screen">
-            <div class="lesson-card">
-              <div class="lesson-progress">7 / 250</div>
-              <h4>Variables</h4>
-              <div class="xp-bar"><div class="xp-fill" style="width: 28%"></div></div>
-              <button class="btn btn-primary btn-sm">CONTINUER</button>
-            </div>
-          </div>
-        </div>
-        <div class="rating-big">4.9 <span>★ Note</span></div>
-      </div>
-    </div>
-  </section>
+  <!-- Mobile section removed: web-first, no app stores -->
+
 
   <!-- Community / Leaderboard -->
   <section class="section community-section">
@@ -483,8 +446,8 @@ function sayHi(name) {
         </div>
         <div class="footer-col">
           <h4>Apprendre</h4>
-          <a href="app.html" class="store-btn small">Ouvrir l'app</a>
-          <a href="app.html?view=dashboard" class="store-btn small">Mon progrès</a>
+          <a href="app.html" class="footer-link">Ouvrir l'app</a>
+          <a href="app.html?view=dashboard" class="footer-link">Mon progrès</a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -494,6 +457,7 @@ function sayHi(name) {
     </div>
   </footer>
 
+  <script src="js/auth.js"></script>
   <script src="assets/icons/map.js"></script>
   <script src="js/app.js"></script>
 
